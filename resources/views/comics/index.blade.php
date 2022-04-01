@@ -7,6 +7,8 @@
 
     <div class="container">
 
+        <a class="btn btn-primary" href="{{route('comics.create')}}">Aggiungi un nuovo fumetto</a>
+
         <table class="table">
             <thead>
               <tr>

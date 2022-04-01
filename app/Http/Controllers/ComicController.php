@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Comic;
 
+use function GuzzleHttp\Promise\all;
+
 class ComicController extends Controller
 {
     /**
@@ -28,7 +30,7 @@ class ComicController extends Controller
      */
     public function create()
     {
-        //
+        return view("comics.create");
     }
 
     /**
@@ -39,7 +41,15 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $comic = new Comic();
+
+        $comic->fill($data);
+        $comic->save();
+
+        return redirect()->route("comics.show", ["comic" => $comic->id]);
+
     }
 
     /**
