@@ -21,7 +21,7 @@
             </thead>
             <tbody>
 
-                <!--scorro-->
+                <!--scorro ogni singolo fumetto, e creo una riga della tabella per ogni elemento-->
                 @foreach ($comics as $comic)
                     <tr>
                         <td>{{$comic["title"]}}</td>
@@ -31,6 +31,9 @@
                         <td>{{$comic["series"]}}</td>
                         <td>{{$comic["sale_date"]}}</td>
                         <td>{{$comic["type"]}}</td>
+
+                        <td><a class="btn btn-primary" href="{{route("comics.show", $comic->id)}}">Mostra dettagli fumetto</a></td>
+                        
                     </tr>
                 @endforeach
                 
