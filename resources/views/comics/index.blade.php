@@ -9,6 +9,13 @@
 
         <a class="btn btn-primary" href="{{route('comics.create')}}">Aggiungi un nuovo fumetto</a>
 
+        @if (session('status'))
+          <div class="alert alert-success">
+            {{ session('status') }}
+          </div>
+        @endif
+
+
         <table class="table">
             <thead>
               <tr>
@@ -34,7 +41,22 @@
                         <td>{{$comic["sale_date"]}}</td>
                         <td>{{$comic["type"]}}</td>
 
-                        <td><a class="btn btn-primary" href="{{route("comics.show", $comic->id)}}">Mostra dettagli fumetto</a></td>
+                        <td class="d-flex">
+                          <a class="btn btn-primary mx-2" href="{{route("comics.show", $comic->id)}}">Mostra dettagli fumetto</a>
+                          <a class="btn btn-warning mx-2" href="{{route("comics.edit", $comic->id)}}">Modifica fumetto</a>
+                          
+                          <!--Form per la canellazione di un elemento-->
+                          <form method="POST" action="{{ route('comics.destroy', ["comic" =>$comic->id])}}">
+  
+                            @csrf
+                            @method("DELETE")
+
+                            <button type="submit" class="btn btn-danger mx-2">Cancella elemento corrente</button>
+
+                          </form>
+                          
+                        
+                        </td>
                         
                     </tr>
                 @endforeach
