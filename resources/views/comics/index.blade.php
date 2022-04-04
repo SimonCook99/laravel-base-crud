@@ -10,7 +10,7 @@
         <a class="btn btn-primary" href="{{route('comics.create')}}">Aggiungi un nuovo fumetto</a>
 
         @if (session('status'))
-          <div class="alert alert-success">
+          <div id="prova" class="alert alert-success">
             {{ session('status') }}
           </div>
         @endif
@@ -46,7 +46,7 @@
                           <a class="btn btn-warning mx-2" href="{{route("comics.edit", $comic->id)}}">Modifica fumetto</a>
                           
                           <!--Form per la canellazione di un elemento-->
-                          <form method="POST" action="{{ route('comics.destroy', ["comic" =>$comic->id])}}">
+                          <form method="POST" action="{{ route('comics.destroy', ["comic" =>$comic->id])}}" onclick = "return confirm('sicuro di cancellare il messaggio?');">
   
                             @csrf
                             @method("DELETE")
