@@ -25,7 +25,7 @@
 
             <div class="mb-3">
                 <label for="thumb" class="form-label" >Indirizzo immagine</label>
-                <input required type="text" class="form-control" id="thumb" name="thumb" value="{{$comic->thumb}}">
+                <input type="text" class="form-control" id="thumb" name="thumb" value="{{$comic->thumb}}">
             </div>
 
 
